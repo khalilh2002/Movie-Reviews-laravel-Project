@@ -1,0 +1,21 @@
+* {
+  font-family: Arial, sans-serif;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.profile-block, .top-genre-block, .other-content {
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: block;
+  
+}

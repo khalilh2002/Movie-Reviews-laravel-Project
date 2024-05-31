@@ -1,0 +1,28 @@
+/* RecentActivity.css */
+.recent-activity-container {
+    margin-top: 20px;
+  }
+  
+  .activity-card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  .activity-card .text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .activity-card img {
+    border-radius: 50%;
+  }
+  
+  .activity-card p {
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #333;
+  }
+  
