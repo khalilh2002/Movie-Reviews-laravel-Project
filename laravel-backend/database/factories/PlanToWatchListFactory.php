@@ -27,7 +27,7 @@ class PlanToWatchListFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => $this->faker->numberBetween(1, 15),
             'show_id' => Show::factory(),
         ];
     }

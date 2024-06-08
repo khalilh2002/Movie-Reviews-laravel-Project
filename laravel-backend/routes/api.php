@@ -28,29 +28,29 @@ Route::post('/register', [securityController::class, 'register']);
 Route::post('/login',[securityController::class,'login']);
 Route::post('/logout',[securityController::class,'logout'])->middleware('auth:sanctum');
 
-Route::post('/favorite/{id}', [favoriteShowsListController::class, 'getFavoriteShowsList']);
-Route::post('/planToWatch/{id}', [planToWatchController::class, 'getPlanToWatchList']);
 
 Route::post('/delete/show/planToWatch/', [planToWatchController::class, 'deleteShowPlanToWatchList'])->middleware('auth:sanctum');
 Route::post('/delete/show/favorite/', [favoriteShowsListController::class, 'deleteShowFavoriteList'])->middleware('auth:sanctum');;
 
-Route::post('/edit/user/', [userController::class, 'editUser'])->middleware('auth:sanctum');;
+Route::post('/edit/user/', [userController::class, 'editUser'])->middleware('auth:sanctum');
 
 
+Route::get('/favorite/{id}', [favoriteShowsListController::class, 'getFavoriteShowsList']);
+Route::get('/planToWatch/{id}', [planToWatchController::class, 'getPlanToWatchList']);
 
 Route::post('/user/{id}', [userController::class, 'getUser']);
 
-Route::post('/rate/show/', [rateController::class, 'updateRate']);
+Route::post('/rate/show/', [rateController::class, 'updateRate'])->middleware('auth:sanctum');;
 
 Route::get('/shows/genre/{id}',[genreController::class,'filterGenre']);
 
-Route::get('/profile/topGenre/{id}',[genreController::class,'topGenre']);
+Route::get('/profile/topGenre/{id}',[genreController::class,'topGenre'])->middleware('auth:sanctum');;
 
 Route::get('/shows',[showController::class,'getShows']);
 
 Route::get('/show/{id}',[showController::class,'getShow']);
 
-Route::get('/profile/activity/{id}',[activityController::class,'getActivities']);
+Route::get('/profile/activity/{id}',[activityController::class,'getActivities'])->middleware('auth:sanctum');;
 
 
 // // Email Verification Routes

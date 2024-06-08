@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
 
         PlanToWatchList::factory(30)->create();
 
-        FavoriteShowsList::factory(30)->create();
+        //FavoriteShowsList::factory(30)->create();
 
         //Rate::factory(20)->create();
 

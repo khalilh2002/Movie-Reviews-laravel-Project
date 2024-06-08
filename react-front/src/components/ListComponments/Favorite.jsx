@@ -1,57 +1,45 @@
+import { useEffect } from "react";
+import GetList from "./GetList";
 
+function Favorite() {
+  const { list, error } = GetList("favorite");
 
-
-function Favorite(){
-    const fakeData = [
-      {
-        title: 'The Great Adventure',
-        score: 8.5,
-        genre: 'Action',
-        type: 'Movie',
-        imageUrl: 'https://picsum.photos/100',
-      },
-      {
-        title: 'Infinite Horizon',
-        score: 7.2,
-        genre: 'Sci-Fi',
-        type: 'TV Show',
-        imageUrl: 'https://picsum.photos/100',
-      },
-      {
-        title: 'Lost in Time',
-        score: 6.9,
-        genre: 'Drama',
-        type: 'Movie',
-        imageUrl: 'https://picsum.photos/100',
-      },
-    ];
-  
-    return (
-      <table className="table table-borderless">
-        <thead className=" table-head text-primary">
+  return (
+    <div className="container my-4">
+      {error && (
+        <div className="alert alert-danger" role="alert">
+          {error}
+        </div>
+      )}
+      <table className="table table-hover table-striped">
+        <thead className="thead-dark">
           <tr>
-            <th></th>
-            <th>Title</th>
-            <th>Score</th>
-            <th>Genre</th>
-            <th>Type</th>
+            <th scope="col"></th>
+            <th scope="col">Title</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Score</th>
           </tr>
         </thead>
         <tbody>
-          {fakeData.map((item, index) => (
+          {list.map((item, index) => (
             <tr key={index}>
-              <td className="text-center">
-                <img src={item.imageUrl} alt="Poster" width={100} />
+              <td>
+                <img 
+                  src={item.poster_img} 
+                  alt={item.title} 
+                  className="img-thumbnail" 
+                  style={{ width: '100px', height: 'auto' }} 
+                />
               </td>
               <td>{item.title}</td>
-              <td>{item.score}</td>
-              <td>{item.genre}</td>
-              <td>{item.type}</td>
+              <td>{item.genre.name}</td>
+              <td>{item.rate}</td>
             </tr>
           ))}
         </tbody>
       </table>
-    );
-  }
+    </div>
+  );
+}
 
-  export default Favorite;
+export default Favorite;
