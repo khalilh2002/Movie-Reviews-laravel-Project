@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use App\Models\Rate;
 use App\Models\Show;
 use App\Models\User;
@@ -15,13 +16,15 @@ class rateController extends Controller
         $show_id = $request->input('show_id');
         $user_id = $request->input('user_id');
         $score = $request->input('score');
+        
         if ($score > 100 || $score < 0) {
             return response()->json(['error' => 'score invalid'], 500);
         }
+        
         $user = User::find($user_id);
 
         if (!$user) {
-            return response()->json(['error' => 'User not found'], 404);
+            return response()->json(['error' => 'User not found' ], 404);
         }
 
         $show = Show::find($show_id);
@@ -37,7 +40,16 @@ class rateController extends Controller
         if ($rate) {
             $rate->score = $score;
             $rate->save();
+
+            $activity = new Activity();
+            $activity->user_id = $user_id;
+            $activity->show_id = $show_id;
+            $activity->action = "you edited the rate of this show '".$show["title"]."'  score ".$score."/100" ;
+            $activity->list_type=null;
+            $activity->save();
+
             return response()->json(['success' => 'rated success'], 200);
+
         }
 
         $rate =  new Rate();
@@ -45,7 +57,16 @@ class rateController extends Controller
         $rate->show_id = $show_id;
         $rate->score = $score;
         $rate->save();
-        return response()->json(['success' => 'rated success'], 200);
+
+        $activity = new Activity();
+        $activity->user_id = $user_id;
+        $activity->show_id = $show_id;
+        $activity->action = "you rated this show '".$show["title"]."'  score ".$score."/100" ;
+        $activity->list_type=null;
+        $activity->save();
+
+
+        return response()->json(['success' => 'rated success','activity'=>'success'], 200);
     }
 
 

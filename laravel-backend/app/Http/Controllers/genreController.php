@@ -24,7 +24,7 @@ class genreController extends Controller
     } 
 
     function topGenre($id)  {
-        $limit = 4;
+        $limit = 5;
 
         $user = User::find($id);
         if (!$user) {

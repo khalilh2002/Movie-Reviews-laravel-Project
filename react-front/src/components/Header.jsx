@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Dropdown, Button, Form } from "react-bootstrap/";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure you have this import if you haven't already
+import EditProfile from "./EditProfile";
 
 export default function Header() {
   const [profile, setProfile] = useState("");
@@ -9,6 +10,9 @@ export default function Header() {
     "https://upload.wikimedia.org/wikipedia/commons/6/61/AniList_logo.svg"
   );
   const [username, setUsername] = useState("");
+  const [base] = useState("http://localhost:8000/");
+
+   
 
   useEffect(() => {
     const sessionToken = localStorage.getItem('session_token');
@@ -66,7 +70,7 @@ export default function Header() {
             <Dropdown className="text-end bg-transparent mx-5">
               <Dropdown.Toggle className="bg-transparent border-0 p-0 d-flex align-items-center">
                 <img
-                  src={profile}
+                  src={`${base}${profile}`}
                   width={32}
                   height={32}
                   className="rounded-circle border border-2 border-dark"
@@ -84,9 +88,13 @@ export default function Header() {
                 <Dropdown.Item as={Link} to="/User/List" className="text-dark">
                   My List
                 </Dropdown.Item>
+                
                 <Dropdown.Item as={Link} to="/Logout" className="text-dark">
                   Sign out
                 </Dropdown.Item>
+
+                <EditProfile></EditProfile>
+
               </Dropdown.Menu>
             </Dropdown>
           ) : (

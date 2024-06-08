@@ -29,14 +29,14 @@ class DatabaseSeeder extends Seeder
 
         //Show::factory(30)->create();
 
-        //PlanToWatchList::factory(20)->create();
+        PlanToWatchList::factory(30)->create();
 
-        //FavoriteShowsList::factory(20)->create();
+        FavoriteShowsList::factory(30)->create();
 
         //Rate::factory(20)->create();
 
-        Activity::factory(10)->create();
+        // Activity::factory(10)->create();
 
-        News::factory(10)->create();
+        // News::factory(10)->create();
     }
 }

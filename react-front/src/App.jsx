@@ -9,6 +9,7 @@ import Profile from './components/Profile'
 import Login from './components/Login'
 import Logout from "./components/Logout";
 import Register from "./components/Register";
+import ShowPage from "./components/ShowsComponent/ShowPage";
 //import VerifiedEmail from "./components/VerifiedEmail";
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Logout" element={<Logout />} />
           <Route path="/Register" element={<Register />} />
-        
+          <Route path="/Show/:id" element={<ShowPage/>} ></Route>
 
 
           {/* <Route path="/verify-email" element={<VerifiedEmail />} /> */}

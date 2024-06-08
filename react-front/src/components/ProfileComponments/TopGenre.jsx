@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "../Api/Axios";
+import GetRandomColor from "./GetRandomColor";
 
+// eslint-disable-next-line react/prop-types
 function TopGenre({ id }) {
   const name = 'm-1';
 
@@ -19,7 +21,7 @@ function TopGenre({ id }) {
 
   const createBadge = (genre, index) => {
     const badgeStyle = {
-      backgroundColor: getRandomColor(),
+      backgroundColor: GetRandomColor(),
       padding: '10px',
       fontFamily: 'sans-serif'
     };
@@ -31,14 +33,7 @@ function TopGenre({ id }) {
     );
   };
 
-  const getRandomColor = () => {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
+  
 
   return (
     <div className=''>

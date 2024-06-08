@@ -1,28 +1,20 @@
+/* eslint-disable react/prop-types */
+import "./css/profileImage.css";
 
-
-
-import "./css/profileImage.css"
-
-function ProfileImage(varItem) {
-    let srcImg = varItem.profileImg;
-    let srcImgCover = varItem.coverImg;
-    let name = varItem.userName;
-
-    return (
+function ProfileImage({ profileImg, coverImg, userName }) {
+  return (
     <div>
       <div className="profile-info">
         <div className="cover-photo">
-          <img className="cover-photo" src={srcImgCover} alt="cover" />
+          <img src={coverImg} alt="cover" />
         </div>
         <div className="profile-details">
-          <img className="profile-pic" src={srcImg} alt="Profile" />
-          <h2>{name}</h2>
+          <img className="profile-pic" src={profileImg} alt="Profile" />
+          <h2>{userName}</h2>
         </div>
       </div>
-      </div>
-  )
+    </div>
+  );
 }
 
-export default ProfileImage
-
-
+export default ProfileImage;

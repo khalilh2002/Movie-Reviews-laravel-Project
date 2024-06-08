@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('show_id');
             $table->string('action');
-            $table->string('list_type'); // 'plan_to_watch' or 'favorite'
+            $table->string('list_type')->nullable(); // 'plan_to_watch' or 'favorite'
             $table->timestamps();
 
             // Define foreign key constraints
