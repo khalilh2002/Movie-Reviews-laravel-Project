@@ -21,6 +21,7 @@ class NewsFactory extends Factory
             'title' => $this->faker->title(),
             'content' => $this->faker->paragraph,
             'show_id'=>null,
+            'image'=>'news/byRDWktpvxwVWqQBNFUb15IGMos5PXf9fJvGvdz9.jpg'
         ];
     }
 }

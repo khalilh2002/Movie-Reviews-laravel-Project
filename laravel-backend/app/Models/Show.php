@@ -32,4 +32,9 @@ class Show extends Model
     {
         return $this->belongsTo(Genre::class);
     }
+
+    public function news()
+    {
+        return $this->hasMany(News::class);
+    }
 }

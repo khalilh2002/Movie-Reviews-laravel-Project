@@ -2,11 +2,14 @@ import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import axios from "../Api/Axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import GetBaseUrl from "../Api/GetBaseUrl";
 
 function ShowsList() {
   const [shows, setShows] = useState([]);
+  const baseUrl = GetBaseUrl();
 
   useEffect(() => {
+
     axios
       .get("shows")
       .then((response) => {
@@ -18,6 +21,7 @@ function ShowsList() {
       });
   }, []);
 
+
   return (
     <Container>
       <Row>
@@ -27,7 +31,7 @@ function ShowsList() {
               <Card className="h-100">
                 <Card.Img
                   variant="top"
-                  src={show.poster_img}
+                  src={baseUrl+show.poster_img}
                   alt={show.title}
                 />
                 <Card.Body>

@@ -12,4 +12,10 @@ class News extends Model
     protected $fillable = [
         'title', 'content', 'show_id','image',
     ];
+
+    public function show()
+    {
+        return $this->belongsTo(Show::class);
+    }
+   
 }

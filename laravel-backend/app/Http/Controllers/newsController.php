@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class newsController extends Controller
 {
     function getAllNews(){
-        $news = News::all();
+        $news = News::with('show')->orderByDesc('created_at')->get();
         return response()->json($news,200);
     }
 
@@ -44,11 +44,13 @@ class newsController extends Controller
     }
 
     function getNews($id) {
-        $news = News::find($id);
+        $news = News::with('show')->find($id);
+
         if (!$news) {
-            return response()->json(['error'=>'title or content is empty'],500);
+            return response()->json(['error' => 'News item not found'], 404);
         }
-        return response()->json($news,200);
+
+        return response()->json($news, 200);
    
     }
 }
