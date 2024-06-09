@@ -47,7 +47,7 @@ class rateController extends Controller
             $activity->action = "you edited the rate of this show '".$show["title"]."'  score ".$score."/100" ;
             $activity->list_type=null;
             $activity->save();
-
+            $this->rateShow();
             return response()->json(['success' => 'rated success'], 200);
 
         }
@@ -65,7 +65,7 @@ class rateController extends Controller
         $activity->list_type=null;
         $activity->save();
 
-
+        $this->rateShow();
         return response()->json(['success' => 'rated success','activity'=>'success'], 200);
     }
 

@@ -30,7 +30,7 @@ export default function Header() {
       <div className="container">
         <div className="d-flex flex-wrap align-items-center justify-content-between">
           <Link
-            className="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none"
+            className="d-flex align-items-center mb-2  mb-lg-0 link-body-emphasis text-decoration-none mx-4"
             to="/home"
           >
             <img src={logo} width={32} height={32} alt="Logo" />
@@ -38,17 +38,17 @@ export default function Header() {
 
           <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 fw-bold">
             <li>
-              <Link to="/News" className="nav-link px-2 link-body-emphasis">
+              <Link to="/All/News/" className="nav-link px-2 link-body-emphasis">
                 News
               </Link>
             </li>
             <li>
-              <Link to="/Profile" className="nav-link px-2 link-secondary">
+              <Link to="/Profile" className="nav-link px-2 link-body-emphasis">
                 Profile
               </Link>
             </li>
             <li>
-              <Link to="/User/List" className="nav-link px-2 link-secondary">
+              <Link to="/User/List" className="nav-link px-2 link-body-emphasis">
                 List
               </Link>
             </li>

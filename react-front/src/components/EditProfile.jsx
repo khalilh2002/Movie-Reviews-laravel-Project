@@ -27,7 +27,6 @@ function EditProfile() {
   }, []);
 
   const handleSubmit = (event) => {
-    const token = GetToken()
     event.preventDefault();
 
     const formData = new FormData();
@@ -44,7 +43,7 @@ function EditProfile() {
     axios.post("/edit/user", formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
-        'Authorization': `Bearer ${token.token}`
+        'Authorization': `Bearer ${GetToken()}`
       },
     })
     .then((response) => {

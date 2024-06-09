@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('news', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
-            $table->string('title');
-            $table->text('content');
-            $table->timestamps();
+        Schema::table('news', function (Blueprint $table) {
+            $table->string('image')->nullable();
         });
     }
 
@@ -25,7 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('news');
-
+        Schema::table('news', function (Blueprint $table) {
+            $table->dropColumn('image');
+        });
     }
 };

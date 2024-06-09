@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\News;
+use App\Models\Show;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +20,7 @@ class NewsFactory extends Factory
         return [
             'title' => $this->faker->title(),
             'content' => $this->faker->paragraph,
-            'publication_date' => $this->faker->date,
+            'show_id'=>null,
         ];
     }
 }

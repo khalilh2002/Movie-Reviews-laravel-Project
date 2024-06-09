@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "../Api/Axios";
 import GetRandomColor from "./GetRandomColor";
+import GetToken from "../Auth/GetToken";
 
 // eslint-disable-next-line react/prop-types
 function TopGenre({ id }) {
@@ -9,7 +10,13 @@ function TopGenre({ id }) {
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
-    axios.get(`profile/topGenre/${id}`)
+    console.warn(GetToken());
+    axios.get(`profile/topGenre/${id}`,{
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${GetToken()}`,
+      },
+    })
       .then(response => {
         console.log(response.data);
         setGenres(response.data); // Set genres in the state
@@ -17,6 +24,7 @@ function TopGenre({ id }) {
       .catch(error => {
         console.error('Error fetching genres:', error);
       });
+      
   }, [id]);
 
   const createBadge = (genre, index) => {

@@ -2,17 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Show;
 use App\Models\User;
 use Illuminate\Http\Request;
-
-use App\Models\PlanToWatchList;
-use App\Models\FavoriteShowsList;
-use Hamcrest\Text\IsEmptyString;
-use Illuminate\Support\Facades\Hash;
-use PHPUnit\Framework\Constraint\IsEmpty;
-
-use function PHPUnit\Framework\isEmpty;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class userController extends Controller
 {
@@ -31,31 +24,51 @@ class userController extends Controller
     
     function editUser(Request $request){
 
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|exists:users,id',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . $request->input('id'),
+            'profile' => 'nullable|file|mimes:jpeg,png,jpg,gif|max:200048',
+            'cover' => 'nullable|file|mimes:jpeg,png,jpg,gif|max:200048',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 422);
+        }
+
         $user = User::find($request->input('id'));
         $user->name = $request->input('name');
         $user->email = $request->input('email');
 
-        //return response()->json($request);
+        
 
-        if ( $request->hasFile('profile')) {
+        if ($request->hasFile('profile')) {
             $profile = $request->file('profile');
-            
-            if ($profile->isValid() ) {
-               $path = $profile->store('profile');
-               $user->profile_picture = $path;
-            }
 
+            if ($profile->isValid()) {
+                // Delete the old profile picture if exists
+                if ($user->profile_picture) {
+                    Storage::delete($user->profile_picture);
+                }
+                $path = $profile->store('profile');
+                $user->profile_picture = $path;
+            }
         }
+
 
         if ($request->hasFile('cover')) {
             $cover = $request->file('cover');
-            
-            if ($cover->isValid()) {
-               $path = $cover->store('cover');
-               $user->cover_picture = $path;
-            }
 
+            if ($cover->isValid()) {
+                // Delete the old cover picture if exists
+                if ($user->cover_picture) {
+                    Storage::delete($user->cover_picture);
+                }
+                $path = $cover->store('cover');
+                $user->cover_picture = $path;
+            }
         }
+
 
         if($user->save()){
             return response()->json(['user'=>$user,'success' => 'user saved'], 200);

@@ -73,6 +73,7 @@ return [
         public_path('storage') => storage_path('app/public'),
         public_path('profile') => storage_path('app/profile'),
         public_path('cover') => storage_path('app/cover'),
+        public_path('news') => storage_path('app/news'),
 
     ],
 

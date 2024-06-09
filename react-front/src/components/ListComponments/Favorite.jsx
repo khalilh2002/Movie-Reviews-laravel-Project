@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import GetList from "./GetList";
 
 function Favorite() {

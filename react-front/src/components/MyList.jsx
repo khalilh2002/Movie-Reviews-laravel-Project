@@ -10,7 +10,7 @@ function MyList(urlVar){
         <div className="container-fluid justify-content-around">
           <ul className="navbar-nav">
             <Nav.Item className="nav-item mx-3">
-              <Nav.Link href="/User/List/Favorite" active>Favorite</Nav.Link>
+              <Nav.Link href="/User/List/Favorite" >Favorite</Nav.Link>
             </Nav.Item>
             <Nav.Item className="nav-item mx-3">
               <Nav.Link href="/User/List/PlanToWatch" >Plan to watch</Nav.Link>

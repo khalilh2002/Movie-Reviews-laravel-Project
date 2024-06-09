@@ -35,8 +35,7 @@ function Profile() {
             <div className="col-md-8">
               <div className="card">
                 <div className="card-body">
-                  <h5 className="card-title">Other Content</h5>
-                  <p>Additional content goes here...</p>
+                  <h5 className="card-title mb-2">Activity</h5>
                   <Activity id={user.id} />
 
                 </div>

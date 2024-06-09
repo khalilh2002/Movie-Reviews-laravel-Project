@@ -22,21 +22,21 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        //User::factory(30)->create();
+        // User::factory(30)->create();
 
         // Genre::factory(10)->Create();
 
 
-        //Show::factory(30)->create();
+        // Show::factory(30)->create();
 
-        PlanToWatchList::factory(30)->create();
+        // PlanToWatchList::factory(30)->create();
 
-        //FavoriteShowsList::factory(30)->create();
+        // FavoriteShowsList::factory(30)->create();
 
-        //Rate::factory(20)->create();
+        // Rate::factory(20)->create();
 
         // Activity::factory(10)->create();
 
-        // News::factory(10)->create();
+        News::factory(10)->create();
     }
 }
