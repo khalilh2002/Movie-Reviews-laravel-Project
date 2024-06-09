@@ -4,6 +4,7 @@ import axios from "../Api/Axios";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import Rate from "./Rate";
+import GetBaseUrl from "../Api/GetBaseUrl";
 
 function ShowPage() {
   const { id } = useParams();
@@ -33,7 +34,7 @@ function ShowPage() {
         <Row className="my-4">
           <Col md={4}>
             <Card>
-              <Card.Img variant="top" src={show.poster_img} alt={show.title} />
+              <Card.Img variant="top" src={GetBaseUrl()+show.poster_img} alt={show.title} />
             </Card>
           </Col>
           <Col md={8}>
