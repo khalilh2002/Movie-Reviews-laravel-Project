@@ -64,9 +64,9 @@ function EditProfile() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <a className="btn btn-primary btn-sm" onClick={handleShow}>
         Edit Profile
-      </Button>
+      </a>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -112,6 +112,7 @@ function EditProfile() {
                 onChange={(e) => setCover(e.target.files[0])}
               />
             </Form.Group>
+            
           </Form>
         </Modal.Body>
         <Modal.Footer>

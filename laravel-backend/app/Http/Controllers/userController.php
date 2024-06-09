@@ -69,6 +69,20 @@ class userController extends Controller
             }
         }
 
+        if ($request->has('removeProfile')) {
+            if ($request->input('removeProfile')) {
+                Storage::delete($user->profile_picture);
+                $user->profile_picture=null;
+            }
+        }
+
+        if ($request->has('removeCover')) {
+            if ($request->input('removeCover')) {
+                Storage::delete($user->cover_picture);
+                $user->cover_picture=null;
+            }
+        }
+
 
         if($user->save()){
             return response()->json(['user'=>$user,'success' => 'user saved'], 200);

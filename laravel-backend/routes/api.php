@@ -19,9 +19,7 @@ use App\Http\Controllers\newsController;
 use App\Http\Controllers\rateController;
 use App\Http\Controllers\showController;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+
 
 
 /***********POST*********/
@@ -68,7 +66,7 @@ Route::get('/news/{id}',[newsController::class,'getNews']);
 
 
 Route::get('/admin/users',[userController::class,'getAllUsers']);
-
+Route::get('/user/{id}',[userController::class,'getUser']);
 
 
 

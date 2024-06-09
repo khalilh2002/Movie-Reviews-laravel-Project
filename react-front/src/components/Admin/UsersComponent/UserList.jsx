@@ -2,7 +2,7 @@ import axios from '../../Api/Axios'
 import  { useEffect, useState } from 'react'
 import GetToken from '../../Auth/GetToken'
 import DeleteUser from './DeleteUser'
-
+import EditUser from './EditUser'
 
 
 function UserList() {
@@ -46,9 +46,12 @@ function UserList() {
             <td>{user.email}</td>
             <td>{user.role}</td>
             <td>
-              <button className="btn btn-info btn-sm mr-2">View</button>
-              <button className="btn btn-warning btn-sm mr-2">Edit</button>
-              <button className="btn btn-danger btn-sm" onClick={()=>{DeleteUser(user.id)}}>Delete</button>
+              <div>
+                <button className="btn btn-info btn-sm mr-2">View</button>
+                <EditUser  id={user.id}></EditUser>
+                <button className="btn btn-danger btn-sm" onClick={()=>{DeleteUser(user.id)}}>Delete</button>
+              </div>
+              
             </td>
           </tr>
         ))}
