@@ -38,13 +38,16 @@ Route::post('/rate/show/', [rateController::class, 'updateRate'])->middleware('a
 
 
 Route::post('/edit/user/', [userController::class, 'editUser'])->middleware('auth:sanctum');
-Route::post('/user/{id}', [userController::class, 'getUser']);
+Route::post('/delete/user/{id}', [userController::class, 'deleteUser'])->middleware('auth:sanctum');
 
 
 Route::post('/add/news',[newsController::class,'addNews']);
 
+Route::post('/add/show',[showController::class,'addShow']);
+
 
 /**********GET***************/
+
 
 Route::get('/favorite/{id}', [favoriteShowsListController::class, 'getFavoriteShowsList']);
 Route::get('/planToWatch/{id}', [planToWatchController::class, 'getPlanToWatchList']);
@@ -62,6 +65,9 @@ Route::get('/show/{id}',[showController::class,'getShow']);
 
 Route::get('/news/all',[newsController::class,'getAllNews']);
 Route::get('/news/{id}',[newsController::class,'getNews']);
+
+
+Route::get('/admin/users',[userController::class,'getAllUsers']);
 
 
 

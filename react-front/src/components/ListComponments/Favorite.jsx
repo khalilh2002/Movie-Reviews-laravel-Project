@@ -1,7 +1,9 @@
+import GetBaseUrl from "../Api/GetBaseUrl";
 import GetList from "./GetList";
 
 function Favorite() {
   const { list, error } = GetList("favorite");
+  const baseUrl = GetBaseUrl()
 
   return (
     <div className="container my-4">
@@ -24,7 +26,7 @@ function Favorite() {
             <tr key={index}>
               <td>
                 <img 
-                  src={item.poster_img} 
+                  src={baseUrl+item.poster_img} 
                   alt={item.title} 
                   className="img-thumbnail" 
                   style={{ width: '100px', height: 'auto' }} 

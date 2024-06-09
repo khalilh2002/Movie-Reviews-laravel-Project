@@ -42,7 +42,7 @@ function LoginForm() {
         if (user.role === "Admin") {
           navigate('/Admin');
         } else {
-            navigate('/home');
+          navigate('/home');
         }
       
         

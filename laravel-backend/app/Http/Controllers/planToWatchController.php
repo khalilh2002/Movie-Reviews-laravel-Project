@@ -48,8 +48,6 @@ class planToWatchController extends Controller
         }
         response()->json(['error' => 'problem in delete'], 205);
         
-        
-
     }
 
 

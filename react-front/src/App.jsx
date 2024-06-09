@@ -12,6 +12,8 @@ import Register from "./components/Register";
 import ShowPage from "./components/ShowsComponent/ShowPage";
 import News from "./components/News";
 import NewsPage from "./components/NewsComponents/NewsPage";
+import AdminDashBoard from "./components/Admin/AdminDashBoard";
+import AdminUser from "./components/Admin/AdminUser";
 
 //import VerifiedEmail from "./components/VerifiedEmail";
 
@@ -24,7 +26,12 @@ function App() {
 
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
-         
+
+
+          <Route path="/Admin" element={<AdminDashBoard />} />
+          <Route path="/Admin/Users" element={<AdminUser />} />
+
+
           <Route path="/User/List" element={<MyList Cmp={Favorite} />} />
           <Route path="/User/List/Favorite" element={<MyList Cmp={Favorite}/>} />
           <Route path="/User/List/PlanToWatch" element={<MyList Cmp={PlanToWatch} />} />
@@ -36,6 +43,7 @@ function App() {
           <Route path="/Register" element={<Register />} />
 
           <Route path="/Show/:id" element={<ShowPage/>} ></Route>
+
 
           <Route path="/All/News/" element={<News/>} ></Route>
           <Route path="/News/:id" element={<NewsPage/>} ></Route>

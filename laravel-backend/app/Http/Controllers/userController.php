@@ -78,13 +78,24 @@ class userController extends Controller
 
     }
     
-    
-    
-    function test($id)  {
+    function deleteUser($id){
         $user = User::find($id);
-        $user->sendEmailVerificationNotification();
-        return "ok";
+        if(!$user){
+            return response()->json(["error"=>"user does not exist"],404);
+        }
+        if($user->delete()){
+            return response()->json(["success"=>"user has been deleted "],200);
+        }
+        return response()->json(["error"=>"problem in user delete"],500);
+
     }
+    
+    function getAllUsers()  {
+        $user = User::all();
+        return response()->json($user,200);
+    }
+
+
     
     
 }
