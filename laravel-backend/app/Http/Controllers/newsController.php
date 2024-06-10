@@ -49,7 +49,7 @@ class newsController extends Controller
                 Storage::delete($news->image);
             }
             // Enregistrement de la nouvelle image
-            $path = $request->file('image')->store('images/news');
+            $path = $request->file('image')->store('news');
             $news->image = $path;
         }
 
