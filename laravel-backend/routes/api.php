@@ -40,11 +40,19 @@ Route::post('/delete/user/{id}', [userController::class, 'deleteUser'])->middlew
 
 
 Route::post('/add/news',[newsController::class,'addNews']);
+Route::post('/edit/news',[newsController::class,'editNews']);
 
-Route::post('/add/show',[showController::class,'addShow']);
+
+
+Route::post('/add/show',[showController::class,'addShow'])->middleware('auth:sanctum');;
 Route::post('/delete/show/{id}',[showController::class,'deleteShow'])->middleware('auth:sanctum');
+Route::post('/edit/show/',[showController::class,'editShow'])->middleware('auth:sanctum');
 
-Route::post('/edit/show/',[showController::class,'editShow']);
+
+Route::post('/delete/genre/{id}',[genreController::class,'deleteGenre'])->middleware('auth:sanctum');
+Route::post('/edit/genre/',[genreController::class,'editGenre'])->middleware('auth:sanctum');
+Route::post('/add/genre/',[genreController::class,'addGenre'])->middleware('auth:sanctum');
+
 
 
 /**********GET***************/
@@ -65,6 +73,7 @@ Route::get('/show/{id}',[showController::class,'getShow']);
 
 
 Route::get('/genres',[genreController::class,'getGenres']);
+Route::get('/genre/{id}',[genreController::class,'getGenre']);
 
 
 
@@ -72,8 +81,8 @@ Route::get('/news/all',[newsController::class,'getAllNews']);
 Route::get('/news/{id}',[newsController::class,'getNews']);
 
 
-Route::get('/admin/users',[userController::class,'getAllUsers']);
-Route::get('/user/{id}',[userController::class,'getUser']);
+Route::get('/admin/users',[userController::class,'getAllUsers'])->middleware('auth:sanctum');
+Route::get('/user/{id}',[userController::class,'getUser'])->middleware('auth:sanctum');
 
 
 

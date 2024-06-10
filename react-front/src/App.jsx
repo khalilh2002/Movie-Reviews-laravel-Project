@@ -15,6 +15,8 @@ import NewsPage from "./components/NewsComponents/NewsPage";
 import AdminDashBoard from "./components/Admin/AdminDashBoard";
 import AdminUser from "./components/Admin/AdminUser";
 import AdminShows from "./components/Admin/AdminShows";
+import AdminGenres from "./components/Admin/AdminGenres";
+import AdminNews from "./components/Admin/AdminNews";
 
 //import VerifiedEmail from "./components/VerifiedEmail";
 
@@ -32,6 +34,8 @@ function App() {
           <Route path="/Admin" element={<AdminDashBoard />} />
           <Route path="/Admin/Users" element={<AdminUser />} />
           <Route path="/Admin/Shows" element={<AdminShows />} />
+          <Route path="/Admin/Genres" element={<AdminGenres />} />
+          <Route path="/Admin/News" element={<AdminNews />} />
 
 
           <Route path="/User/List" element={<MyList Cmp={Favorite} />} />

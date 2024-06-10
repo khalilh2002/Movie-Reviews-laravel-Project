@@ -12,7 +12,11 @@ function EditUser({ id }) {
   const [showModal, setShowModal] = useState(false);
 
   const fetchData = () => {
-    axios.get('/user/' + id)
+    axios.get('/user/' + id, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${GetToken()}`
+      } })
       .then((response) => {
         setName(response.data.name);
         setEmail(response.data.email);

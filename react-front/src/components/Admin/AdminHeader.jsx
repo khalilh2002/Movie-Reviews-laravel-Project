@@ -19,6 +19,9 @@ function AdminHeader() {
             <li className="nav-item">
               <Link className="nav-link" to="/Admin/Genres">Genres</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/Admin/News">News</Link>
+            </li>
           </ul>
         </div>
       </div>
