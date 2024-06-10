@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react';
+import  { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 import axios from '../../Api/Axios';
 import GetToken from '../../Auth/GetToken';
@@ -11,26 +11,28 @@ function EditUser({ id }) {
   const [isCheckedCover, setIsCheckedCover] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-    useEffect(() => {
-        axios.get('/user/' + id)
-          .then((response) => {
-            setName(response.data.name);
-            setEmail(response.data.email);
-          })
-          .catch((error) => {
-            console.error('Error fetching user data:', error);
-          });
-      }, [id ,showModal]);
-  
+  const fetchData = () => {
+    axios.get('/user/' + id)
+      .then((response) => {
+        setName(response.data.name);
+        setEmail(response.data.email);
+      })
+      .catch((error) => {
+        console.error('Error fetching user data:', error);
+      });
+  };
+
   
 
-  const handleShow = () => setShowModal(true);
+  const handleShow = () => {
+    setShowModal(true);
+    fetchData();
+  }
+
   const handleClose = () => setShowModal(false);
 
   const handleSave = () => {
-    // Save user changes
    
-
     const formData = new FormData()
     formData.append('id',id)
     formData.append('name',name)

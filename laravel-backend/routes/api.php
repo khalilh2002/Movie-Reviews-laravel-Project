@@ -42,6 +42,9 @@ Route::post('/delete/user/{id}', [userController::class, 'deleteUser'])->middlew
 Route::post('/add/news',[newsController::class,'addNews']);
 
 Route::post('/add/show',[showController::class,'addShow']);
+Route::post('/delete/show/{id}',[showController::class,'deleteShow'])->middleware('auth:sanctum');
+
+Route::post('/edit/show/',[showController::class,'editShow']);
 
 
 /**********GET***************/
@@ -59,6 +62,10 @@ Route::get('/profile/activity/{id}',[activityController::class,'getActivities'])
 Route::get('/shows/genre/{id}',[genreController::class,'filterGenre']);
 Route::get('/shows',[showController::class,'getShows']);
 Route::get('/show/{id}',[showController::class,'getShow']);
+
+
+Route::get('/genres',[genreController::class,'getGenres']);
+
 
 
 Route::get('/news/all',[newsController::class,'getAllNews']);

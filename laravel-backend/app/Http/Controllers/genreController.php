@@ -46,4 +46,9 @@ class genreController extends Controller
         $shows = Show::where('genre_id',$id)->get();
         return response()->json($shows , 200);
     }
+
+    function getGenres() {
+        $genres = Genre::all();
+        return response()->json($genres,200);
+    }
 }

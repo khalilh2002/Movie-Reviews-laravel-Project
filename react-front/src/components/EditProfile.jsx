@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
+import {  useState } from 'react';
+import {Button , Dropdown} from 'react-bootstrap/';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import axios from './Api/Axios';
@@ -14,7 +14,7 @@ function EditProfile() {
   const [profile, setProfile] = useState(null);
   const [id, setId] = useState('');
 
-  useEffect(() => {
+  const fetchData = () => {
     const tmp = JSON.parse(localStorage.getItem('user_info'));
     if (tmp) {
       setUser(tmp);
@@ -24,7 +24,7 @@ function EditProfile() {
       setName(tmp.name);
       setId(tmp.id);
     }
-  }, []);
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -60,13 +60,19 @@ function EditProfile() {
   };
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setShow(true)
+    fetchData()
+  };
 
   return (
     <>
-      <a className="btn btn-primary btn-sm" onClick={handleShow}>
+      {/* <a className="btn btn-primary btn-sm" onClick={handleShow}>
+      </a> */}
+
+      <Dropdown.Item onClick={handleShow}>
         Edit Profile
-      </a>
+      </Dropdown.Item>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
