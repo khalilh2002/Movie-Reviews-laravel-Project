@@ -39,8 +39,9 @@ Route::post('/edit/user/', [userController::class, 'editUser'])->middleware('aut
 Route::post('/delete/user/{id}', [userController::class, 'deleteUser'])->middleware('auth:sanctum');
 
 
-Route::post('/add/news',[newsController::class,'addNews']);
-Route::post('/edit/news',[newsController::class,'editNews']);
+Route::post('/add/news',[newsController::class,'addNews'])->middleware('auth:sanctum');
+Route::post('/edit/news',[newsController::class,'editNews'])->middleware('auth:sanctum');
+Route::post('/delete/news/{id}',[newsController::class,'deleteNews']);
 
 
 

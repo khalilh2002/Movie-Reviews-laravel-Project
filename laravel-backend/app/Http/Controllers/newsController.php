@@ -18,6 +18,28 @@ class newsController extends Controller
     }
 
 
+    function deleteNews(int $id){
+        $news = News::find($id);
+
+        // Vérifier si l'actualité existe
+        if (!$news) {
+            return response()->json([
+                'success' => false,
+                'message' => 'News not found',
+            ], 404);
+        }
+
+        // Supprimer l'actualité
+        $news->delete();
+
+        // Retourner une réponse JSON de succès
+        return response()->json([
+            'success' => true,
+            'message' => 'News deleted successfully',
+        ],200);
+    }
+
+
     public function editNews(Request $request)
     {
         // Validation des entrées
@@ -26,7 +48,7 @@ class newsController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'show_id' => 'nullable|exists:shows,id',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image' => 'nullable|file|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         $id = $request->input('id');
@@ -97,7 +119,7 @@ class newsController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'show_id' => 'nullable|exists:shows,id',
-            'image' => 'nullable|string'
+            'image' => 'nullable|file'
         ]);
 
         // Récupération des données

@@ -29,15 +29,20 @@ function NewsPage() {
       <Container className="my-4">
         <Row>
           <Col md={8}>
-            <Card>
+            <Card className="p-2">
               {news.image && (
-                <Card.Img
-                  variant="top"
-                  src={`${baseUrl}${news.image}`}
-                  alt={news.title}
-                />
+                <div className="d-flex justify-content-center align-center">
+                    <Card.Img
+                    variant="top"
+                    style={{maxWidth:400}}
+                    src={`${baseUrl}${news.image}`}
+                    alt={news.title}
+                  />
+
+                </div>
+                
               )}
-              <Card.Body>
+              <Card.Body >
                 <Card.Title>{news.title}</Card.Title>
                 <Card.Text>{news.content}</Card.Text>
               </Card.Body>
