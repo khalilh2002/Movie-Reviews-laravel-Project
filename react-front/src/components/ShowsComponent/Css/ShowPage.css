@@ -1,0 +1,19 @@
+.show-page-container {
+    background-color: #232f3e; /* IMDb-like blue color */
+    color: #ffffff; /* White text color */
+  }
+  
+  .show-poster-card,
+  .show-details-card {
+    background-color: #ffffff; /* White background color */
+    border: none;
+  }
+  
+  .show-details-card {
+    border-left: 3px solid #007bff; /* IMDb-like blue color for border */
+  }
+  
+  .show-rating-badge {
+    background-color: #007bff; /* IMDb-like blue color for badge */
+  }
+  

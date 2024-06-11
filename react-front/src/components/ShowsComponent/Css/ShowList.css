@@ -1,0 +1,29 @@
+.card-img-top {
+    height: 300px;
+    object-fit: cover;
+  }
+  
+  .card {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .text-primary {
+    color: #007bff !important;
+  }
+  
+  .text-muted {
+    color: #6c757d !important;
+  }
+  
+  .mt-4 {
+    margin-top: 1.5rem !important;
+  }
+  
+  .mb-4 {
+    margin-bottom: 1.5rem !important;
+  }
+  
