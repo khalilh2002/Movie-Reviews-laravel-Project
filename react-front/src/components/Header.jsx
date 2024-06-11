@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Dropdown, Button, Form } from "react-bootstrap/";
+import { Dropdown, Button } from "react-bootstrap/";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure you have this import if you haven't already
 import EditProfile from "./EditProfile";
+import Search from "./Search";
 
 export default function Header() {
   const [profile, setProfile] = useState("");
@@ -55,15 +56,7 @@ export default function Header() {
           </ul>
 
           <div className="d-flex mx-4">
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-primary">Search</Button>
-            </Form>
+              <Search></Search>
           </div>
 
           {username ? (

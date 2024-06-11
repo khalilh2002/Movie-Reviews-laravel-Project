@@ -170,4 +170,13 @@ class showController extends Controller
             return response()->json(['error' => 'Failed to update show'], 500);
         }
     }
+
+    function SearchShows(Request $request)
+    {
+        $query = $request->input('query');
+        $shows = Show::where('title', 'LIKE', "%{$query}%")
+                      //->orWhere('description', 'LIKE', "%{$query}%")
+                      ->get();
+        return response()->json($shows);
+    }
 }

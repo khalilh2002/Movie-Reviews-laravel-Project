@@ -87,6 +87,8 @@ Route::get('/news/{id}',[newsController::class,'getNews']);
 Route::get('/admin/users',[userController::class,'getAllUsers'])->middleware('auth:sanctum');
 Route::get('/user/{id}',[userController::class,'getUser'])->middleware('auth:sanctum');
 
+Route::get('/search-shows', [showController::class, 'SearchShows']);
+
 
 
 // // Email Verification Routes
