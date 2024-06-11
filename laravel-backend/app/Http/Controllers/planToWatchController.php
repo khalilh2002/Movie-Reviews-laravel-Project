@@ -46,10 +46,37 @@ class planToWatchController extends Controller
         if ( $list[0]->delete() ){
             return response()->json(['success' => 'show has been removed'], 200);
         }
-        response()->json(['error' => 'problem in delete'], 205);
+        response()->json(['error' => 'problem in delete'], 500);
         
     }
 
+
+
+    function addShowPlanToWatchList(Request $request){
+        $request->validate([
+            'user_id' => 'required|integer|exists:users,id',
+            'show_id' => 'required|integer|exists:shows,id',
+        ]);
+
+        $planToWatch = new PlanToWatchList();
+        $planToWatch->user_id = $request->input('user_id');
+        $planToWatch->show_id = $request->input('show_id');
+
+        $userId = $request->input('user_id');
+        $showId = $request->input('show_id');
+
+        $list = $this->ORM_planToWatch_One_User_Show($userId , $showId);
+        if (count($list)!=0) {
+            return response()->json(['error' => 'Show is already in the list'], 400);
+        }
+
+
+        if ($planToWatch->save()) {
+            return response()->json(['success' => 'show has been added','PlanToWatch'=>$planToWatch], 200);
+        }
+        response()->json(['error' => 'problem in save'], 500);
+
+    }
 
      /**
      * return one show in plan to watch list of a user

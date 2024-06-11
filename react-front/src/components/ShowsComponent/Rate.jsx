@@ -4,6 +4,7 @@ import { Badge } from "react-bootstrap";
 import "../Css/general.css";
 import axios from "../Api/Axios";
 import GetToken from "../Auth/GetToken";
+import "./Css/Rate.css";
 
 
 function Rate({ show_id, documentId }) {
@@ -47,8 +48,8 @@ function Rate({ show_id, documentId }) {
           Authorization: `Bearer ${GetToken()}`,
         },
       })
-      .then((response) => {
-        console.log(response.data);
+      .then(() => {
+        alert('reviewed successfully '+score)
       })
       .catch((error) => {
         console.error("Error submitting rating:", error);
@@ -58,25 +59,32 @@ function Rate({ show_id, documentId }) {
   return (
     <>
       {user ? (
-        <>
-          <Badge bg="primary" className="mx-2 objectHover" onClick={handleAdd}>
-            +
-          </Badge>
-          <Badge
-            bg="secondary"
-            className="mx-2 objectHover"
-            onClick={handleMinus}
-          >
-            -
-          </Badge>
-          <Badge
-            bg="secondary"
-            className="mx-2 objectHover"
-            onClick={handleSubmit}
-          >
-            Ok
-          </Badge>
-        </>
+        <div className="rating-system-container">
+        <Badge
+          bg="primary"
+          className="rating-badge"
+          onClick={handleAdd}
+          title="Increase Rating"
+        >
+          +
+        </Badge>
+        <Badge
+          bg="secondary"
+          className="rating-badge"
+          onClick={handleMinus}
+          title="Decrease Rating"
+        >
+          -
+        </Badge>
+        <Badge
+          bg="success"
+          className="rating-badge"
+          onClick={handleSubmit}
+          title="Submit Rating"
+        >
+          Ok
+        </Badge>
+      </div>
       ) : null}
     </>
   );

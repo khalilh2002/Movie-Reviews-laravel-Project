@@ -3,8 +3,7 @@
 /**
  * TODO
  * never forget the Middleware need Token in Header after every request Json 
- * TODO
- * add news with show relation
+ * 
  */
 
 use App\Http\Controllers\activityController;
@@ -31,6 +30,10 @@ Route::post('/logout',[securityController::class,'logout'])->middleware('auth:sa
 Route::post('/delete/show/planToWatch/', [planToWatchController::class, 'deleteShowPlanToWatchList'])->middleware('auth:sanctum');
 Route::post('/delete/show/favorite/', [favoriteShowsListController::class, 'deleteShowFavoriteList'])->middleware('auth:sanctum');;
 
+Route::post('/add/planToWatch/', [planToWatchController::class, 'addShowPlanToWatchList'])->middleware('auth:sanctum');
+Route::post('/add/favorite/', [favoriteShowsListController::class, 'addShowFavoriteList'])->middleware('auth:sanctum');;
+
+
 
 Route::post('/rate/show/', [rateController::class, 'updateRate'])->middleware('auth:sanctum');
 
@@ -41,7 +44,7 @@ Route::post('/delete/user/{id}', [userController::class, 'deleteUser'])->middlew
 
 Route::post('/add/news',[newsController::class,'addNews'])->middleware('auth:sanctum');
 Route::post('/edit/news',[newsController::class,'editNews'])->middleware('auth:sanctum');
-Route::post('/delete/news/{id}',[newsController::class,'deleteNews']);
+Route::post('/delete/news/{id}',[newsController::class,'deleteNews'])->middleware('auth:sanctum');
 
 
 

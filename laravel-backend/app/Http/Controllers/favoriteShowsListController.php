@@ -54,6 +54,31 @@ class favoriteShowsListController extends Controller
 
     }
 
+    function addShowFavoriteList(Request $request){
+        $request->validate([
+            'user_id' => 'required|integer|exists:users,id',
+            'show_id' => 'required|integer|exists:shows,id',
+        ]);
+
+        $favoriteList = new FavoriteShowsList();
+        $favoriteList->user_id = $request->input('user_id');
+        $favoriteList->show_id = $request->input('show_id');
+
+        $userId = $request->input('user_id');
+        $showId = $request->input('show_id');
+
+        $list = $this->ORM_favorite_One_User_Show($userId , $showId);
+        if (count($list)!=0) {
+            return response()->json(['error' => 'Show is already in the list'], 400);
+        }
+
+        if ($favoriteList->save()) {
+            return response()->json(['success' => 'show has been added','favoriteList'=>$favoriteList], 200);
+        }
+        response()->json(['error' => 'problem in save'], 500);
+
+    }
+
 
 
     
