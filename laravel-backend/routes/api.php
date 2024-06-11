@@ -7,7 +7,6 @@
  */
 
 use App\Http\Controllers\activityController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\securityController;
@@ -27,8 +26,8 @@ Route::post('/login',[securityController::class,'login']);
 Route::post('/logout',[securityController::class,'logout'])->middleware('auth:sanctum');
 
 
-Route::post('/delete/show/planToWatch/', [planToWatchController::class, 'deleteShowPlanToWatchList'])->middleware('auth:sanctum');
-Route::post('/delete/show/favorite/', [favoriteShowsListController::class, 'deleteShowFavoriteList'])->middleware('auth:sanctum');;
+Route::post('/delete/planToWatch/', [planToWatchController::class, 'deleteShowPlanToWatchList'])->middleware('auth:sanctum');
+Route::post('/delete/favorite/', [favoriteShowsListController::class, 'deleteShowFavoriteList'])->middleware('auth:sanctum');;
 
 Route::post('/add/planToWatch/', [planToWatchController::class, 'addShowPlanToWatchList'])->middleware('auth:sanctum');
 Route::post('/add/favorite/', [favoriteShowsListController::class, 'addShowFavoriteList'])->middleware('auth:sanctum');;

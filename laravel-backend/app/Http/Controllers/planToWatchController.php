@@ -24,23 +24,28 @@ class planToWatchController extends Controller
 
     function deleteShowPlanToWatchList(Request $request){
 
+        $request->validate([
+            'user_id' => 'required|integer|exists:users,id',
+            'show_id' => 'required|integer|exists:shows,id',
+        ]);
+
         $userId = $request->input('user_id');
         $showId = $request->input('show_id');
 
-        $user = User::find($userId);
+        // $user = User::find($userId);
 
-        if (!$user) {
-            return response()->json(['error' => 'User not found'], 404);
-        }
+        // if (!$user) {
+        //     return response()->json(['error' => 'User not found'], 404);
+        // }
 
-        $show = Show::find($showId);
-        if (!$show) {
-            return response()->json(['error' => 'Show not found'], 404);
-        }
+        // $show = Show::find($showId);
+        // if (!$show) {
+        //     return response()->json(['error' => 'Show not found'], 404);
+        // }
 
         $list = $this->ORM_planToWatch_One_User_Show($userId , $showId);
         if (count($list)==0) {
-            return response()->json(['error' => 'Show is not in the list'], 400);
+            return response()->json(['error' => 'Show is not in the list'], 404);
         }
 
         if ( $list[0]->delete() ){
