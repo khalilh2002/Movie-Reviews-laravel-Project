@@ -6,7 +6,6 @@ import axios from "../Api/Axios";
 import GetToken from "../Auth/GetToken";
 import "./Css/Rate.css";
 
-
 function Rate({ show_id, documentId }) {
   const [user, setUser] = useState(null);
   const [score, setScore] = useState();
@@ -17,26 +16,26 @@ function Rate({ show_id, documentId }) {
       setUser(JSON.parse(tmp));
     }
   }, []);
+
   const handleAdd = () => {
-    document.getElementById(documentId).textContent++;
-    setScore(document.getElementById(documentId).textContent);
+    const element = document.getElementById(documentId);
+    element.textContent++;
+    setScore(element.textContent);
   };
+
   const handleMinus = () => {
-    document.getElementById(documentId).textContent--;
-    setScore(document.getElementById(documentId).textContent);
+    const element = document.getElementById(documentId);
+    element.textContent--;
+    setScore(element.textContent);
   };
+
   const handleSubmit = () => {
     let formData = new FormData();
-
     formData.append("show_id", show_id);
     formData.append("user_id", user.id);
     formData.append("score", score);
 
-    if (
-      !formData.has("show_id") ||
-      !formData.has("user_id") ||
-      !formData.has("score")
-    ) {
+    if (!formData.has("show_id") || !formData.has("user_id") || !formData.has("score")) {
       console.error("Form data is empty");
       return;
     }
@@ -49,7 +48,7 @@ function Rate({ show_id, documentId }) {
         },
       })
       .then(() => {
-        alert('reviewed successfully '+score)
+        alert('Reviewed successfully: ' + score);
       })
       .catch((error) => {
         console.error("Error submitting rating:", error);
@@ -60,31 +59,31 @@ function Rate({ show_id, documentId }) {
     <>
       {user ? (
         <div className="rating-system-container">
-        <Badge
-          bg="primary"
-          className="rating-badge"
-          onClick={handleAdd}
-          title="Increase Rating"
-        >
-          +
-        </Badge>
-        <Badge
-          bg="secondary"
-          className="rating-badge"
-          onClick={handleMinus}
-          title="Decrease Rating"
-        >
-          -
-        </Badge>
-        <Badge
-          bg="success"
-          className="rating-badge"
-          onClick={handleSubmit}
-          title="Submit Rating"
-        >
-          Ok
-        </Badge>
-      </div>
+          <Badge
+            bg="primary"
+            className="rating-badge rating-increase"
+            onClick={handleAdd}
+            title="Increase Rating"
+          >
+            +
+          </Badge>
+          <Badge
+            bg="secondary"
+            className="rating-badge rating-decrease"
+            onClick={handleMinus}
+            title="Decrease Rating"
+          >
+            -
+          </Badge>
+          <Badge
+            bg="success"
+            className="rating-badge rating-submit"
+            onClick={handleSubmit}
+            title="Submit Rating"
+          >
+            Ok
+          </Badge>
+        </div>
       ) : null}
     </>
   );

@@ -66,7 +66,7 @@ function Search() {
               <hr />
               <div className='d-flex justify-content-around'>
                 <Button variant="secondary" onClick={() => setSelectedShow(null)}>Back to Results</Button>
-                <Button variant="success" onClick={() => navigate('/show/'+selectedShow.id)}>Go to Show</Button>
+                <Button variant="success" onClick={() => {handleCloseModal(); navigate('/show/'+selectedShow.id)}}>Go to Show</Button>
               </div>
               
             </div>

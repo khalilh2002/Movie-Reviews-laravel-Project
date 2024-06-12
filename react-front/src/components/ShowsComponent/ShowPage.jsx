@@ -24,34 +24,25 @@ function ShowPage() {
       });
   }, [id]);
 
-
- 
-
-
   if (!show) {
     return <div>Loading...</div>;
   }
 
   async function addToList(typeList) {
-    const listData = await FactoryAddToList(typeList ,GetUser().id , id );
-    alert(listData)
+    const listData = await FactoryAddToList(typeList, GetUser().id, id);
+    alert(listData);
   }
-
-
-
 
   return (
     <div className="show-page-container">
       <Header />
       <Container>
-        
         <Row className="my-4">
           <Col md={4}>
             <Card className="show-poster-card">
               <Card.Img variant="top" src={GetBaseUrl() + show.poster_img} alt={show.title} />
             </Card>
           </Col>
-
           <Col md={8}>
             <Card className="show-details-card">
               <Card.Body>
@@ -64,17 +55,22 @@ function ShowPage() {
                   <Badge bg="primary" className="show-rating-badge">
                     <span id="showRate">{show.rate}</span> / 100
                   </Badge>
-                  <Rate show_id={show.id} documentId={"showRate"}></Rate>
+                  <div className="p-3">
+                  <Rate show_id={show.id} documentId={"showRate"}  />
 
-                    <Button className="mx-3" onClick={()=>{addToList('favorite')}} >Heart</Button>
-                    <Button className="mx-3" onClick={()=>{addToList('plan_to_watch')}} >Plan to watch</Button>
-
+                  </div>
+                  <div className="mt-3">
+                    <Button variant="outline-danger" className="mx-1" onClick={() => addToList('favorite')}>
+                      <i className="bi bi-heart"></i> Add to Favorites
+                    </Button>
+                    <Button variant="outline-info" className="mx-1" onClick={() => addToList('plan_to_watch')}>
+                      <i className="bi bi-clock"></i> Plan to Watch
+                    </Button>
+                  </div>
                 </Card.Text>
-
                 <Card.Text>
                   <strong>Release Date:</strong> {show.release_date}
                 </Card.Text>
-                {/* Add more show details as necessary */}
               </Card.Body>
             </Card>
           </Col>

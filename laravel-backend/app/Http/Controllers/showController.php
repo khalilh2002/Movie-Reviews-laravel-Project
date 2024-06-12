@@ -179,4 +179,6 @@ class showController extends Controller
                       ->get();
         return response()->json($shows);
     }
+
+    
 }

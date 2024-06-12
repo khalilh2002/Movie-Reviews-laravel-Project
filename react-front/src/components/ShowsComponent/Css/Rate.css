@@ -1,20 +1,32 @@
 .rating-system-container {
-    display: flex;
-  }
-  
-  .rating-badge {
-    cursor: pointer;
-    margin: 0 5px;
-    padding: 10px 15px;
-    font-size: 20px;
-    transition: all 0.3s ease;
-  }
-  
-  .rating-badge:hover {
-    transform: scale(1.1);
-  }
-  
-  .rating-badge:active {
-    transform: scale(0.9);
-  }
-  
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rating-badge {
+  cursor: pointer;
+  padding: 10px;
+  font-size: 1.25rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.rating-increase:hover {
+  background-color: #007bff;
+  transform: scale(1.1);
+}
+
+.rating-decrease:hover {
+  background-color: #6c757d;
+  transform: scale(1.1);
+}
+
+.rating-submit:hover {
+  background-color: #28a745;
+  transform: scale(1.1);
+}
+
+.rating-increase:active, .rating-decrease:active, .rating-submit:active {
+  transform: scale(0.9);
+}

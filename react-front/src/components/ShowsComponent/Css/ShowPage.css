@@ -1,19 +1,43 @@
 .show-page-container {
-    background-color: #232f3e; /* IMDb-like blue color */
-    color: #ffffff; /* White text color */
-  }
-  
-  .show-poster-card,
-  .show-details-card {
-    background-color: #ffffff; /* White background color */
-    border: none;
-  }
-  
-  .show-details-card {
-    border-left: 3px solid #007bff; /* IMDb-like blue color for border */
-  }
-  
-  .show-rating-badge {
-    background-color: #007bff; /* IMDb-like blue color for badge */
-  }
-  
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+.show-poster-card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.show-details-card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.show-details-card .card-body {
+  padding: 20px;
+}
+
+.show-details-card .card-title {
+  font-size: 1.75rem;
+  margin-bottom: 20px;
+}
+
+.show-details-card .card-text {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.show-rating-badge {
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.show-details-card .btn {
+  font-size: 1rem;
+}
+
+.show-details-card .btn i {
+  margin-right: 5px;
+}
