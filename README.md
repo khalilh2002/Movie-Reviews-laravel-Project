@@ -109,11 +109,11 @@ This is a Movie Review Site built using ReactJS for the frontend and Laravel for
 
 ## API Endpoints
 
-# Middleware
+### Middleware
 
 Ensure that the middleware `auth:sanctum` is applied to routes that require authentication.
 
-# POST Routes
+### POST Routes
 
 - **User Authentication:**
     - `POST /register`: Register a new user.
@@ -150,7 +150,7 @@ Ensure that the middleware `auth:sanctum` is applied to routes that require auth
     - `POST /edit/genre/`: Edit a genre. Requires Bearer token.
     - `POST /add/genre/`: Add a genre. Requires Bearer token.
 
-# GET Routes
+### GET Routes
 
 - **Favorite Shows:**
     - `GET /favorite/{id}`: Get the list of favorite shows for a user.
