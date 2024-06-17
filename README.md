@@ -2,6 +2,20 @@
 
 This is a Movie Review Site built using ReactJS for the frontend and Laravel for the backend API. The site includes features such as user registration and login, rating movies, adding movies to a favorite list, and planning to watch movies later.
 
+## Index
+
+1. [Features](#features)
+2. [Technologies Used](#technologies-used)
+3. [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+4. [Project Structure](#project-structure)
+5. [API Endpoints](#api-endpoints)
+    - [Middleware](#middleware)
+    - [POST Routes](#post-routes)
+    - [GET Routes](#get-routes)
+6. [Contact](#contact)
+
 ## Features
 
 - **User Authentication**: Register and login functionality using Bearer token for secure access.
@@ -181,9 +195,6 @@ Ensure that the middleware `auth:sanctum` is applied to routes that require auth
 
 - **Search:**
     - `GET /search-shows`: Search for shows.
-
-
-
 
 ## Contact
 
